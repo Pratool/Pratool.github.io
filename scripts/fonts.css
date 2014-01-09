@@ -1,0 +1,14 @@
+@font-face {
+	font-family: GoudyBookletter1911;
+	src: url(../fonts/goudy_bookletter_1911.woff);
+}
+
+@font-face {
+	font-family: AlegreyaSans;
+	src: url(../fonts/AlegreyaSans.woff);
+}
+
+@font-face {
+	font-family: LiberationSans;
+	src: url(../fonts/LiberationSans.woff);
+}
