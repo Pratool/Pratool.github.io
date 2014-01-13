@@ -84,6 +84,20 @@
 	display: none;
 }
 
+.creator {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	color: #111111;
+	font-family: AftaSans;
+	font-weight: bold;
+	font-size: 13pt;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
 a {
 	color: #0797F2;
 	text-decoration: none;
@@ -91,6 +105,6 @@ a {
 
 body {
 	display: none;
-	background: #DDDDDD; /*#1111CC;*/
+	background: #DDDDDD; /*#CCDDFF; /*#E8A200; /*#1111CC;*/
 	color: #111111;
 }

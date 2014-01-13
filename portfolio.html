@@ -1,0 +1,261 @@
+<html>
+<head>
+<title>Portfolio</title>
+<link rel="stylesheet" type="text/css" href="scripts/fonts.css">
+<link rel="stylesheet" type="text/css" href="scripts/portfolio.css">
+<script src="scripts/jquery-2.0.3.js"></script>
+<script src="scripts/captions.js"></script>
+<script src="scripts/blurbs.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("body").fadeIn("slow");
+	
+	$(".leftArrow").click(function(){
+		if ($(".img0").css("left") != "650px")
+		{
+			rotatePics("left");
+			rotateCaps("left");
+		}
+	});
+	
+	$(".rightArrow").click(function(){
+		if ($(".img"+(allImages.length-1)).css("left") != "650px")
+		{
+			rotatePics("right");
+			rotateCaps("right");
+		}
+	});
+	
+	var slidingTime = 300;
+	
+	var maxPics = 5;
+	var imgMargin = 20;
+	var imgDiff = 15;
+	var imgWidth = 300;
+	var centerImg = imgMargin + (imgDiff+imgWidth)*2;
+	
+	var images = new Array();
+	var allImages = new Array("FinalHopperRender.jpg", "FourLegAssembly.jpg", "SolarWeb01.gif", "HackMIT05.png", "Hopper02.jpg");
+	var imageLocs = new Array();
+	setPics();
+	closeClick();
+	
+	function closeClick()
+	{
+		$(".close").mouseover(function(){
+			$(".close").html("close [x]");
+		});
+		
+		$(".close").mouseout(function(){
+			$(".close").html("[x]");
+		});
+		
+		$(".close").click(function(){
+			$(".contentWindow").slideToggle(slidingTime);
+			$(".darken").animate({
+				opacity: "0"
+			}, slidingTime, function(){
+				$(".darken").css("display", "none");
+			});
+			$(".contentWindow").html("<span class='close'>[x]</span>");
+			closeClick();
+		});
+	}
+
+	
+	for (var i = 0; i <= allImages.length-1; i++)
+	{
+		$(".img"+i).click(function(){
+			//goToPos($(this).attr("class"));
+			openWindow(blurbs[$(this).attr("class").substring($(this).attr("class").length-1, $(this).attr("class").length)] );
+		});
+		
+		$(".img"+i).mouseover(function(){
+			$( "."+$(this).attr("class") ).css("box-shadow", "0px 0px 15px #fff");
+		});
+		
+		$(".img"+i).mouseout(function(){
+			$( "."+$(this).attr("class") ).css("box-shadow", "0 0 30px rgba(0, 0, 0, 0.2)");
+		});
+	}
+	
+	function openWindow(insideText)
+	{
+		$(".darken").css("display", "block");
+		$(".contentWindow").slideToggle(slidingTime);
+		$(".contentWindow").append(insideText);
+		$(".darken").animate({
+			opacity: "0.6"
+		}, slidingTime);
+	}
+	
+	function goToPos(obj)	// AWKWARD FUNCTION: display messes up and caption does not follow
+	{
+		leftValue = $("."+obj).css("left");
+		leftValue2 = leftValue.substring(0, leftValue.indexOf('p'));
+		
+		var k = centerImg - leftValue2;
+		
+		if (k < 0)
+		{
+			k = -1 * k;
+			k = k / (imgDiff + imgWidth);
+			
+			for (var m = 1; m <= k; m++)
+			{
+				rotatePics("left");
+				rotateCaps("left");
+			}
+		}
+		else if (k > 0)
+		{
+			k = k / (imgDiff + imgWidth);
+			
+			for (var m = 1; m <= k; m++)
+			{
+				rotatePics("right");
+				rotateCaps("right");
+			}
+		}
+		else
+			return;
+	}
+	
+	function rotateCaps(direction)
+	{
+		if (direction == "right")
+		{
+			var firstCap = captions[0];
+			
+			for (var i = 0; i <= captions.length-2; i++)
+			{
+				captions[i] = captions[i+1];
+			}
+			
+			captions[captions.length-1] = firstCap;
+		}
+		
+		else
+		{
+			var lastCap = captions[captions.length-1];
+			var tempCap1 = captions[0];
+			var tempCap2;
+			
+			for (var i = 0; i <= captions.length-2; i++)
+			{
+				tempCap2 = captions[i+1]
+				captions[i+1] = tempCap1;
+				tempCap1 = tempCap2;
+			}
+			
+			captions[0] = lastCap;
+		}
+		
+		$(".caption").html(captions[2]);
+	}
+	
+	function rotatePics(direction)	// Has to have more than 1 picture
+	{
+		var firstPic = ".img";
+		var lastPic = ".img";
+		
+		if (direction == "right")
+		{
+			for (var i = 0; i <= allImages.length-1; i++)
+			{
+				if ( $(".img"+i).css("left") == "20px" )
+				{
+					firstPic += i;
+				}
+				else if ( $(".img"+i).css("left") == "1595px" )
+				{
+					lastPic += i;
+				}
+				$(".img"+i).animate({
+					left: "-=" + (imgWidth+imgDiff)
+				}, 500);
+			}
+			
+			$(firstPic).css("display", "none");
+			$(lastPic).css("display", "block");
+		}
+		
+		else
+		{
+			for (var i = 0; i <= allImages.length-1; i++)
+			{
+				if ( $(".img"+i).css("left") == "-295px" )
+				{
+					firstPic += i;
+				}
+				else if ( $(".img"+i).css("left") == "1280px" )
+				{
+					lastPic += i;
+				}
+				
+				$(".img"+i).animate({
+					left: "+=" + (imgWidth+imgDiff)
+				}, 500);
+			}
+			
+			$(firstPic).css("display", "block");
+			$(lastPic).css("display", "none");
+		}
+	}
+	
+	function setPics()
+	{
+		var setStyles = "{ box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); z-index: 3; position: absolute; top: 200px; left:";
+		var setInvisibleStyles = "{ display: none; box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); z-index: 3; position: absolute; top: 200px; left:";
+		var makingStyles = "";
+		var j = 0;
+		
+		for (j = 0; j <= maxPics-1; j++)
+		{
+			imageLocs[j] = imgMargin + (imgDiff + imgWidth)*j;
+			makingStyles += ".img" + j + setStyles + imageLocs[j] + "px; } \n";
+		}
+		
+		for (j = j; j <= allImages.length-1; j++)
+		{
+			imageLocs[j] = imgMargin + (imgDiff + imgWidth)*j;
+			makingStyles += ".img" + j + setInvisibleStyles + imageLocs[j] + "px; } \n";
+		}
+		
+		$("body").append("<style type='text/css'>\n" + makingStyles + "</style>");
+		
+		for (var i = 0; i <= allImages.length-1; i++)
+		{
+			$("body").append("<div class='img"+ i + "'><img src='images/" + allImages[i] + "' width='300' height='200'></div>");
+		}
+	}
+	
+	function deletePics()
+	{
+		for (var i = 0; i <= images.length-1; i++)
+		{
+			$(".img"+i).remove();
+		}
+	}
+	
+});
+</script>
+</head>
+<body>
+<div class="heading">Portfolio</div>
+<br>
+<div class="subheading">Take a look</div>
+<div style="width: 100%; height: 500px; position: absolute; top: 150px; left: 0px; background: #111111"></div>
+<div class="caption">
+<a href="http://pratool.github.io/Olin-Shine">Olin Shine</a>: Solar Panels at Olin<br>
+</div>
+<div class="leftArrow"></div>
+<div class="rightArrow"></div>
+<div class="darken"></div>
+<div class="contentWindow">
+<span class="close">[x]</span>
+</div>
+<div class="creator">website by pratool gadtaula</div>
+</body>
+</html>

@@ -12,3 +12,8 @@
 	font-family: LiberationSans;
 	src: url(../fonts/LiberationSans.woff);
 }
+
+@font-face {
+	font-family: AftaSans;
+	src: url(../fonts/AftaSansThin.woff);
+}
