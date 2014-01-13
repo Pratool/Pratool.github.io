@@ -36,10 +36,6 @@ $(document).ready(function(){
 	height: 350px;
 }
 
-body {
-	background: #990404;
-}
-
 .header {
 	font-family: AlegreyaSans;
 	font-size: 100pt;
@@ -76,7 +72,7 @@ body {
 	top: 500px;
 	left: 20px;
 	color: #DDDDDD;
-	width: 800px;
+	width: 770px;
 	line-height: 175%;
 }
 
@@ -86,15 +82,18 @@ body {
 
 .center {
 	width: 810px;
+	height: 100%;
 	position: absolute;
 	left: 50%;
 	top: 0px;
 	margin-left: -405px;
+	background: #888888;
+	z-index: 99;
 }
 
 .portfolio {
 	position: absolute;
-	left: 0px;
+	left: -25px;
 	top: 100px;
 	width: 120px;
 	background: #0062AB;
@@ -109,11 +108,13 @@ body {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 	text-align: right;
 	cursor: pointer;
+	border-radius: 25px;
+	border-left: 25px solid transparent;
 }
 
 .bio {
 	position: absolute;
-	left: 0px;
+	left: -25px;
 	top: 175px;
 	width: 120px;
 	background: #62A800;
@@ -128,11 +129,13 @@ body {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 	text-align: right;
 	cursor: pointer;
+	border-radius: 25px;
+	border-left: 25px solid transparent;
 }
 
 .art {
 	position: absolute;
-	left: 0px;
+	left: -25px;
 	top: 250px;
 	width: 120px;
 	background: #A80062;
@@ -147,10 +150,13 @@ body {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 	text-align: right;
 	cursor: pointer;
+	border-radius: 25px;
+	border-left: 25px solid transparent;
 }
 
 body {
 	display: none;
+	background: #111111;
 }
 </style>
 </head>
