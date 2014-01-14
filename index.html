@@ -2,31 +2,12 @@
 <head>
 <title>Brief Biography</title>
 <link rel="stylesheet" type="text/css" href="scripts/fonts.css">
+<link rel="stylesheet" type="text/css" href="scripts/navigation.css">
 <script src="scripts/jquery-2.0.3.js"></script>
+<script src="scripts/navigation.js"></script>
 <script>
 $(document).ready(function(){
-	
 	$("body").fadeIn("slow");
-	
-	var numberTabs = 3;
-	var temp;
-	
-	for (var i = 0; i <= numberTabs-1; i++)
-	{
-		$("div").eq(i).mouseover(function(){
-			$(this).css("width", "160px");
-			$(this).css("color", "DDDDDD");
-		});
-		$("div").eq(i).mouseout(function(){
-			$(this).css("width", "120px");
-			$(this).css("color", "#111111");
-		});
-	}
-	
-	$(".portfolio").click(function(){
-		window.location.href = "portfolio.html";
-	});
-	
 });
 </script>
 <style type="text/css">
@@ -93,69 +74,6 @@ $(document).ready(function(){
 	z-index: 99;
 }
 
-.portfolio {
-	position: absolute;
-	left: -25px;
-	top: 100px;
-	width: 120px;
-	background: #0062AB;
-	color: #111111;
-	padding-right: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-size: 20pt;
-	font-family: AftaSans;
-	font-weight: bold;
-	-webkit-font-smoothing: antialiased;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-	text-align: right;
-	cursor: pointer;
-	border-radius: 25px;
-	border-left: 25px solid transparent;
-}
-
-.bio {
-	position: absolute;
-	left: -25px;
-	top: 175px;
-	width: 120px;
-	background: #62A800;
-	color: #111111;
-	padding-right: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-size: 20pt;
-	font-family: AftaSans;
-	font-weight: bold;
-	-webkit-font-smoothing: antialiased;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-	text-align: right;
-	cursor: pointer;
-	border-radius: 25px;
-	border-left: 25px solid transparent;
-}
-
-.art {
-	position: absolute;
-	left: -25px;
-	top: 250px;
-	width: 120px;
-	background: #A80062;
-	color: #111111;
-	padding-right: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-size: 20pt;
-	font-family: AftaSans;
-	font-weight: bold;
-	-webkit-font-smoothing: antialiased;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-	text-align: right;
-	cursor: pointer;
-	border-radius: 25px;
-	border-left: 25px solid transparent;
-}
-
 body {
 	display: none;
 	background: #111111;
@@ -163,15 +81,12 @@ body {
 </style>
 </head>
 <body>
-<div class="portfolio">portfolio</div>
-<div class="bio">bio</div>
-<div class="art">art</div>
 <div class="center">
 	<div class="header">pratool</div>
 	<div class="self"><img src="images/self.jpg" height="350"></div>
 	<div class="subheader">Doing things <span class="italic">differently</span></div>
 	<div class="description">
-		As a self-proclaimed programmer, web designer, peace-keeper, and humanitarian, I dutifully try to help the human species as best as I can. This website samples some of my interests and professional work.
+		As a self-proclaimed programmer, web designer, peace-keeper, and humanitarian, at best I try to help the human species. This website samples some of my interests and professional work.
 	</div>
 </div>
 </body>
