@@ -27,12 +27,15 @@ $(document).ready(function(){
 			$(".center").css("left", "50%");
 		}
 	}
+	
+	$(".bio").unbind("mouseover");
+	$(".bio").unbind("mouseout");
 });
 </script>
 <style type="text/css">
 .self {
 	position: absolute;
-	left: 225px;
+	left: 275px;
 	top: 120px;
 	width: auto;
 	height: 350px;
@@ -78,6 +81,12 @@ $(document).ready(function(){
 	line-height: 175%;
 }
 
+.bio {
+	width: 160px;
+	color: #DDDDDD;
+	cursor: default;
+}
+
 .italic {
 	font-style: italic;
 }
@@ -102,10 +111,10 @@ body {
 <body>
 <div class="center">
 	<div class="header">pratool</div>
-	<div class="self"><img src="images/self.jpg" height="350"></div>
+	<div class="self"><img src="images/self02.jpg" height="370"></div>
 	<div class="subheader">Doing things <span class="italic">differently</span></div>
 	<div class="description">
-		As a self-proclaimed programmer, web designer, peace-keeper, and humanitarian, at best I try to help the human species. This website samples some of my interests and professional work.
+		Thinking in another creative and imaginative way solves problems and yields us to the true beauty of the human mind. As a self-proclaimed programmer, web designer, peace-keeper, and humanitarian, at best I try to help the human species. This website samples some of my interests and professional work.
 	</div>
 </div>
 </body>

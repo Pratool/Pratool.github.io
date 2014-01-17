@@ -1,5 +1,3 @@
-//$("body").append("<div class='portfolio'>portfolio</div><div class='bio'>bio</div><div class='art'>art</div>");
-
 $(document).ready(function(){
 	$("body").append("<div class='portfolio'>portfolio</div><div class='bio'>bio</div><div class='art'>side proj</div>");
 	
