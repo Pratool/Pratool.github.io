@@ -7,29 +7,30 @@
 <script src="scripts/navigation.js"></script>
 <script>
 $(document).ready(function(){
-	
-	$("body").fadeIn("slow");
-	
-	adjustWidth();
-	
-	$(window).resize(adjustWidth);
-	
-	function adjustWidth()
-	{
-		if ( $(window).width()*0.16 <= 185 )
+	$(window).bind("load", function(){
+		$("body").fadeIn("slow");
+		
+		adjustWidth();
+		
+		$(window).resize(adjustWidth);
+		
+		function adjustWidth()
 		{
-			$(".center").css("margin-left", "0px");
-			$(".center").css("right", "0px");
-			$(".center").css("left", "auto");
-		} else {
-			$(".center").css("margin-left", "-405px");
-			$(".center").css("right", "auto");
-			$(".center").css("left", "50%");
+			if ( $(window).width()*0.16 <= 185 )
+			{
+				$(".center").css("margin-left", "0px");
+				$(".center").css("right", "0px");
+				$(".center").css("left", "auto");
+			} else {
+				$(".center").css("margin-left", "-405px");
+				$(".center").css("right", "auto");
+				$(".center").css("left", "50%");
+			}
 		}
-	}
-	
-	$(".bio").unbind("mouseover");
-	$(".bio").unbind("mouseout");
+		
+		$(".bio").unbind("mouseover");
+		$(".bio").unbind("mouseout");
+	});
 });
 </script>
 <style type="text/css">
