@@ -24,26 +24,52 @@
 
 .leftArrow {
 	position: absolute;
-	left: 20px;
-	top: 450px;
+	left: 0px;
+	top: 400px;
 	width: 0;
 	height: 0;
-	border-top: 50px solid transparent;
-	border-right: 100px solid #AAAAAA;
-	border-bottom: 50px solid transparent;
+	border-top: 25px solid transparent;
+	border-right: 50px solid #AAAAAA;
+	border-bottom: 25px solid transparent;
+	opacity: 0.05;
 	cursor: pointer;
+	z-index: 20;
 }
 
 .rightArrow {
 	position: absolute;
-	right: 20px;
-	top: 450px;
+	right: 0px;
+	top: 400px;
 	width: 0;
 	height: 0;
-	border-top: 50px solid transparent;
-	border-left: 100px solid #AAAAAA;
-	border-bottom: 50px solid transparent;
+	border-top: 25px solid transparent;
+	border-left: 50px solid #AAAAAA;
+	border-bottom: 25px solid transparent;
+	opacity: 0.05;
 	cursor: pointer;
+	z-index: 20;
+}
+
+.leftSide {
+	position: absolute;
+	left: 0px;
+	top: 150px;
+	height: 500px;
+	width: 50px;
+	background: #EEEEEE;
+	z-index: 24;
+	opacity: 0.05;
+}
+
+.rightSide {
+	position: absolute;
+	right: 0px;
+	top: 150px;
+	height: 500px;
+	width: 50px;
+	background: #EEEEEE;
+	z-index: 24;
+	opacity: 0.05;
 }
 
 .contentWindow {

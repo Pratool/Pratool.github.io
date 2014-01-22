@@ -11,7 +11,7 @@ $(document).ready(function(){
 	
 	$("body").fadeIn("slow");
 	
-	$(".leftArrow").click(function(){
+	$(".leftSide").click(function(){
 		if ($(".img0").css("left") != "650px")
 		{
 			rotatePics("left");
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$(".rightArrow").click(function(){
+	$(".rightSide").click(function(){
 		if ($(".img"+(allImages.length-1)).css("left") != "650px")
 		{
 			rotatePics("right");
@@ -40,7 +40,51 @@ $(document).ready(function(){
 	var imageLocs = new Array();
 	setPics();
 	closeClick();
+	hoverArrow();
 	
+	function hoverArrow()
+	{
+		$(".leftSide").mouseover(function(){
+			$(".leftSide").animate({
+				opacity: "0.8"
+			}, slidingTime)
+			$(".leftArrow").animate({
+				opacity: "1"
+			}, slidingTime)
+		})
+		
+		$(".leftSide").mouseout(function(){
+			$(".leftSide").stop(true);
+			$(".leftArrow").stop(true);
+			$(".leftSide").animate({
+				opacity: "0.05"
+			}, slidingTime)
+			$(".leftArrow").animate({
+				opacity: "0"
+			}, slidingTime)
+		});
+		
+		$(".rightSide").mouseover(function(){
+			$(".rightSide").animate({
+				opacity: "0.8"
+			}, slidingTime)
+			$(".rightArrow").animate({
+				opacity: "1"
+			}, slidingTime)
+		})
+		
+		$(".rightSide").mouseout(function(){
+			$(".rightSide").stop(true);
+			$(".rightArrow").stop(true);
+			$(".rightSide").animate({
+				opacity: "0.05"
+			}, slidingTime)
+			$(".rightArrow").animate({
+				opacity: "0"
+			}, slidingTime)
+		});
+	}
+
 	function closeClick()
 	{
 		$(".close").mouseover(function(){
@@ -250,7 +294,9 @@ $(document).ready(function(){
 <div class="caption">
 <a href="http://pratool.github.io/Olin-Shine">Olin Shine</a>: Solar Panels at Olin<br>
 </div>
+<div class="leftSide"></div>
 <div class="leftArrow"></div>
+<div class="rightSide"></div>
 <div class="rightArrow"></div>
 <div class="darken"></div>
 <div class="contentWindow">
