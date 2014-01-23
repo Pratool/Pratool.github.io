@@ -81,6 +81,7 @@
 	width: 80%;
 	height: 80%;
 	-webkit-transform: translate(-50%, 0px);
+	transform: translate(-50%, 0px);
 	background: #2A2B36;
 	color: #E3DEAA;
 	font-size: 14pt;
