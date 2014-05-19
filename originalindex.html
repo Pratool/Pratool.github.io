@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Brief Biography</title>
+<link rel="stylesheet" type="text/css" href="scripts/fonts.css">
+<link rel="stylesheet" type="text/css" href="scripts/navigation.css">
+<script src="scripts/jquery-2.0.3.js"></script>
+<script src="scripts/navigation.js"></script>
+<script>
+$(document).ready(function(){
+	$(window).bind("load", function(){
+		$("body").fadeIn("slow");
+		
+		adjustWidth();
+		
+		$(window).resize(adjustWidth);
+		
+		function adjustWidth()
+		{
+			if ( $(window).width()*0.16 <= 185 )
+			{
+				$(".center").css("margin-left", "0px");
+				$(".center").css("right", "0px");
+				$(".center").css("left", "auto");
+			} else {
+				$(".center").css("margin-left", "-405px");
+				$(".center").css("right", "auto");
+				$(".center").css("left", "50%");
+			}
+		}
+		
+		$(".bio").unbind("mouseover");
+		$(".bio").unbind("mouseout");
+	});
+});
+</script>
+<style type="text/css">
+.self {
+	position: absolute;
+	right: 20px;
+	top: 120px;
+	/*width: 300px;*/
+	height: auto;
+}
+
+.header {
+	font-family: AlegreyaSans;
+	font-size: 100pt;
+	position: absolute;
+	left: 17px;
+	top: -10px;
+	color: black;
+	z-index: 10;
+	letter-spacing: -3px;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+.subheader {
+	font-family: AftaSans;
+	font-size: 26pt;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	color: #BBBBBB;
+	position: absolute;
+	left: 45px;
+	top: 120px;
+	/*width: 200px;*/
+	background: #111111;
+	padding: 10px;
+}
+
+.description {
+	font-family: AftaSans;
+	font-size: 16pt;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	position: absolute;
+	top: 200px;
+	left: 20px;
+	color: #111111;
+	width: 400px;/*770px;*/
+	line-height: 175%;
+	text-align: justify;
+}
+
+.bio {
+	width: 160px;
+	color: #DDDDDD;
+	cursor: default;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.center {
+	width: 810px;
+	height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	margin-left: -405px;
+	background: #DDDDDD;
+	z-index: 99;
+}
+
+body {
+	display: none;
+	background: #111111;
+	cursor: default;
+}
+
+.loader {
+	display: block;
+	background: black;
+	color: white;
+	font-size: 72pt;
+	font-family: Arial;
+	height: 200px;
+}
+	
+</style>
+</head>
+<body>
+<div class="center">
+	<div class="header">pratool</div>
+	<div class="self"><img src="images/self03.jpg" width="350"></div>
+	<div class="subheader">Doing things <span class="italic">differently</span></div>
+	<div class="description">
+		Thinking in other creative and imaginative ways solves problems and yields to us the true beauty of the human mind. As a self-proclaimed programmer, web designer, peace-keeper, and humanitarian, at best I try to help the human species. This website samples some of my interests and professional work.
+	</div>
+</div>
+</body>
+</html>
