@@ -1,0 +1,12 @@
+.self { position: absolute;
+	top: 60px; }
+
+.leadblurb { position: relative;
+	 left: 310px;
+	 font-size: 16pt;
+	 width: 400px; }
+
+.blurb { position: relative;
+	 left: 310px;
+	 font-size: 13pt;
+	 width: 400px; } 
