@@ -1,12 +1,31 @@
-.self { position: absolute;
-	top: 60px; }
+.self {
+	position: absolute;
+	top: 60px;
+}
 
-.leadblurb { position: relative;
-	 left: 310px;
-	 font-size: 16pt;
-	 width: 400px; }
+.leadblurb {
+	position: relative;
+	left: 310px;
+	font-size: 16pt;
+	width: 400px;
+}
 
-.blurb { position: relative;
-	 left: 310px;
-	 font-size: 13pt;
-	 width: 400px; } 
+.blurb {
+	position: relative;
+	left: 310px;
+	font-size: 13pt;
+	width: 400px;
+}
+
+h1.portfolio {
+	position: relative;
+	left: 310px;
+}
+
+#projects {
+	position: relative;
+	top: 230px;
+	width: 100%;
+	height: 300px;
+	background-color: #F0F0F0;
+}
