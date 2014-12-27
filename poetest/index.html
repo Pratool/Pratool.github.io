@@ -34,6 +34,12 @@
     .allmembers {
       padding-top: 30px;
     }
+
+    @media (min-width: 768px) and (max-width: 1200px) {
+      .video {
+        width: 560px;
+      }
+    }
     /*.navbar .nav > li > a {
       color: white;
     }*/
@@ -88,7 +94,7 @@
         <p>The five members of <i>Big Summer Blowout!</i> created an interactive dancing penguin that detects smiles and responds to different states with three different dances.  The penguin itself includes four degrees of freedom while the smile recognition program reads in images and analyzes them via a Raspberry Pi.  It then sends messages to an Arduino Uno to manipulate the servo controlled mechanisms</p>
       </section>
       <section class="geninfo col col-lg-6">
-        <iframe width="100%" height="315" src="http://www.youtube.com/embed/ZxJ6ZMuumJ4?list=UU-r3PLI8YK9u1pLbGTi5I1A" frameborder="0" allowfullscreen></iframe> <!--width=560px-->
+        <iframe class="video" width="100%" height="315" src="http://www.youtube.com/embed/ZxJ6ZMuumJ4?list=UU-r3PLI8YK9u1pLbGTi5I1A" frameborder="0" allowfullscreen></iframe> <!--width=560px-->
       </section>
     </div>
 
@@ -102,25 +108,12 @@
       </section>
       <section class="center col col-lg-4">
           <h2>Software</h2>
-          <p>Frank dances for people and their smiles! He has state-of-the-art smile recognition using a logistic classifier from a data set of smiling faces and say some more about the software...</p>
-          <p>Frank only reacts to people and their smiles! He has state-of-the-art smile recognition using a logistic classifier from a data set of smiling faces and say some more about the software...</p>
-          <p>Frank only reacts to people and their smiles! He has state-of-the-art smile recognition using a logistic classifier from a data set of smiling faces and say some more about the software...</p>
-          <p>Frank only reacts to people and their smiles! He has state-of-the-art smile recognition using a logistic classifier from a data set of smiling faces and say some more about the software...</p>
+          <p>Frank dances for people and their smiles! He has state-of-the-art smile recognition using a logistic classifier trained from a data set of more than 20,000 faces labeled according to whether or not the face is smiling. The smile recognition software first receives the video stream data frame by frame. Then, using haar cascades in OpenCV, the face is cropped out, adjusted, and then classified into a smile or non-smile category. Depending on the smile or smiles seen, the penguin danced accordingly. Through this exploration, we learned quite a lot about the overlap between image processing and machine learning in a directly applicable manner.</p>
           <p><a class="btn btn-info btn-sm" href="#" role="button">more info.</a></p>
       </section>
       <section class="right col col-lg-4">
         <h2>Integration</h2>
-        <p>
-        Some dummy text.
-        </p>
-        <p> With 4 degrees of motion, Frank has many different dance moves.
-        Thanks to the yaw and some more stuff on the mechanical system...</p>
-        <p> With 4 degrees of motion, Frank has many different dance moves.
-        Thanks to the yaw and some more stuff on the mechanical system...</p>
-        <p> With 4 degrees of motion, Frank has many different dance moves.
-        Thanks to the yaw and some more stuff on the mechanical system...</p>
-        <p> With 4 degrees of motion, Frank has many different dance moves.
-        Thanks to the yaw and some more stuff on the mechanical system...</p>
+        <p> Frank has many different dance moves with his four degrees of motion. Just as difficult was making sure that Frank got the right information when he needed it. Controlling those four motors draws more power than the Raspberry Pi outputs through USB, so we looked into alternate methods. We ran into heat shutdowns, stalling motors, improperly received image data, and all the time-delays and lag when we moved away from the very secure and stable environment in which a laptop was our power source. In the end, we were able to be more portable than we had even anticipated, drawing power from a 4400 mAh USB battery pack and 4 AA batteries! We even remotely processed the video frames streamed from the Raspberry Pi on a laptop, wirelessly!</p>
         <p><a class="btn btn-info btn-sm" href="#" role="button">more info.</a></p>
       </section>
     </div>
@@ -134,11 +127,11 @@
 
     <div class="content row">
       <section class="bottom col col-lg-6">
-        <iframe width="100%" height="315" src="http://www.youtube.com/embed/yFfw0RteVwA" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video" width="100%" height="315" src="http://www.youtube.com/embed/yFfw0RteVwA" frameborder="0" allowfullscreen></iframe>
         <!--width=420px-->
       </section>
       <section class="bottom col col-lg-6">
-        <iframe width="100%" height="315" src="http://www.youtube.com/embed/Kf6xVtLfjAo" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video" width="100%" height="315" src="http://www.youtube.com/embed/Kf6xVtLfjAo" frameborder="0" allowfullscreen></iframe>
         <!--width=420px-->
       </section>
     </div>
@@ -146,7 +139,17 @@
     </div><!-- content -->
     <div class="members row" id="team">
       <section class="col col-lg-12">
-        <h2>All the members!</h2>
+        <h2>Members of <i>Big Summer Blowout!</i></h2>
+      </section>
+    </div>
+
+    <div class="members row">
+      <section class="pics col col-lg-2">
+        <img src="./img/pratoolthumb.png" width="150px" class="img-circle">
+      </section>
+      <section class="allmembers col col-lg-10">
+        <h4>Pratool Gadtaula</h4>
+        <p>Pratool is an Electrical and Computer Engineering major from the class of 2017. It's been rumored that Pratool once disappeared into the woods of upstate New York and reached enlightenment into the inner workings of a Raspberry Pi (of the B+ variety). As a result, he was able to connect our Pi to an Arduino to allow the motors to respond to our facial detection system. He played a large role in integrating the many elements of our project.</p>
       </section>
     </div>
 
@@ -155,16 +158,8 @@
         <img src="./img/megthumb.png" width="150px" class="img-circle">
       </section>
       <section class="allmembers col col-lg-10">
+        <h4>Meg Lidrbauch</h4>
         <p>Meg is a part of the Olin College class of 2017. Surprisingly, even with her close-to-edgy sense of sarcastic humor (little did she know that everyone enjoyed her jokes), she gets along with everybody who matters, her teammates. Even our computers got along with her and her most smile of smiles.  She enjoys the cold and winter (and possibly the summer), because if it wasn't for her we wouldn't have a theme (Olaf was a hard sell, but we compromised) -- or a legit mechanical system.</p>
-      </section>
-    </div>
-
-    <div class="members row">
-      <section class="pics col col-lg-2">
-        <img src="./img/jaythumb.png" width="150px" class="img-circle">
-      </section>
-      <section class="allmembers col col-lg-10">
-        <p>Jay likes to work sideways. No one knows why, but he does. In addition to making life harder for himself, Jay is taking 6 classes (5 for credit). For this project, Jay pretended he was a Mech:E, designing the ornithopter linkage that makes the wings flap. Hmm... ornithopter... ornithology... the study of birds... eeenteresting. Oh, uh. Yeah, Jay. Okay. Jay was very helpful, but we can't remember what he did. But we couldn't have done it without him! We <3 Jay.</p>
       </section>
     </div>
 
@@ -173,6 +168,7 @@
         <img src="./img/julianthumb.png" width="150px" class="img-circle">
       </section>
       <section class="allmembers col col-lg-10">
+        <h4>Julian Morris</h4>
         <p>Engineering with Computing major, class of 2016.  Is secretly a troll.  Enjoys taking selfies in the corner (he says he's working on the smile detector but we know what he's actually up to).  Skills include Java, Python, Arduino programming, and playing with everything around him when he's bored. Is currently learning SQL, C++, and how to dance like a penguin.  His contributions to this project included working on the software side, website, and causing a minor battery explosion.</p>
       </section>
     </div>
@@ -182,18 +178,21 @@
         <img src="./img/michellethumb.png" width="150px" class="img-circle">
       </section>
       <section class="allmembers col col-lg-10">
+        <h4>Michelle Sit</h4>
         <p>A Wellesley College senior. Biked to come to team meetings from Wellesley sometimes on weekends. Helped create the dancing motion, the smile detector, the final website, and came up with the dancing moves for the penguin. Dreams of becoming a penguin one day. Likes to perform martial arts. Possibly related to her desire to become a dancing penguin.</p>
       </section>
     </div>
 
     <div class="members row">
       <section class="pics col col-lg-2">
-        <img src="./img/pratoolthumb.png" width="150px" class="img-circle">
+        <img src="./img/jaythumb.png" width="150px" class="img-circle">
       </section>
       <section class="allmembers col col-lg-10">
-        <p>Pratool is an Electrical and Computer Engineering major from the class of 2017. It's been rumored that Pratool once disappeared into the woods of upstate New York and reached enlightenment into the inner workings of a Raspberry Pi (of the B+ variety). As a result, he was able to connect our Pi to an Arduino to allow the motors to respond to our facial detection system. He played a large role in integrating the many elements of our project.</p>
+        <h4>Jay Woo</h4>
+        <p>Jay likes to work sideways. No one knows why, but he does. In addition to making life harder for himself, Jay is taking 6 classes (5 for credit). For this project, Jay pretended he was a Mech:E, designing the ornithopter linkage that makes the wings flap. Hmm... ornithopter... ornithology... the study of birds... eeenteresting. Oh, uh. Yeah, Jay. Okay. Jay was very helpful, but we can't remember what he did. But we couldn't have done it without him! We <3 Jay.</p>
       </section>
     </div>
+
   </section><!-- container -->
 
   <script src="./js/jquery-2.1.3.min.js"></script>
