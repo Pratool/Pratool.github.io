@@ -1,31 +1,25 @@
-.self {
-	position: absolute;
-	top: 60px;
+@font-face {
+    font-family: "gyre";
+    src: url(fonts/texgyreschola.woff);
 }
 
-.leadblurb {
+.self {
 	position: relative;
-	left: 310px;
-	font-size: 16pt;
-	width: 400px;
+	top: 23px;
+}
+
+.text {
+    font-family: gyre;
+}
+
+.header {
+    font-size: 36pt;
+}
+
+.lead {
+    font-size: 16pt;
 }
 
 .blurb {
-	position: relative;
-	left: 310px;
-	font-size: 13pt;
-	width: 400px;
-}
-
-h1.portfolio {
-	position: relative;
-	left: 310px;
-}
-
-#projects {
-	position: relative;
-	top: 230px;
-	width: 100%;
-	height: 300px;
-	background-color: #F0F0F0;
+    font-size: 12pt;
 }

@@ -1,307 +1,67 @@
-<html>
-<head>
-<title>Portfolio</title>
-<link rel="stylesheet" type="text/css" href="scripts/fonts.css">
-<link rel="stylesheet" type="text/css" href="scripts/portfolio.css">
-<script src="scripts/jquery-2.0.3.js"></script>
-<script src="scripts/captions.js"></script>
-<script src="scripts/blurbs.js"></script>
-<script>
-$(document).ready(function(){
-	
-	$("body").fadeIn("slow");
-	
-	$(".leftSide").click(function(){
-		if ($(".img0").css("left") != "650px")
-		{
-			rotatePics("left");
-			rotateCaps("left");
-		}
-	});
-	
-	$(".rightSide").click(function(){
-		if ($(".img"+(allImages.length-1)).css("left") != "650px")
-		{
-			rotatePics("right");
-			rotateCaps("right");
-		}
-	});
-	
-	var slidingTime = 300;
-	
-	var maxPics = 5;
-	var imgMargin = 20;
-	var imgDiff = 15;
-	var imgWidth = 300;
-	var centerImg = imgMargin + (imgDiff+imgWidth)*2;
-	
-	var images = new Array();
-	var allImages = new Array("FinalHopperRender.jpg", "FourLegAssembly.jpg", "SolarWeb01.gif", "HackMIT05.png", "Hopper02.jpg");
-	var imageLocs = new Array();
-	setPics();
-	closeClick();
-	hoverArrow();
-	
-	function hoverArrow()
-	{
-		$(".leftSide").mouseover(function(){
-			$(".leftSide").animate({
-				opacity: "0.8"
-			}, slidingTime)
-			$(".leftArrow").animate({
-				opacity: "1"
-			}, slidingTime)
-		})
-		
-		$(".leftSide").mouseout(function(){
-			$(".leftSide").stop(true);
-			$(".leftArrow").stop(true);
-			$(".leftSide").animate({
-				opacity: "0.05"
-			}, slidingTime)
-			$(".leftArrow").animate({
-				opacity: "0"
-			}, slidingTime)
-		});
-		
-		$(".rightSide").mouseover(function(){
-			$(".rightSide").animate({
-				opacity: "0.8"
-			}, slidingTime)
-			$(".rightArrow").animate({
-				opacity: "1"
-			}, slidingTime)
-		})
-		
-		$(".rightSide").mouseout(function(){
-			$(".rightSide").stop(true);
-			$(".rightArrow").stop(true);
-			$(".rightSide").animate({
-				opacity: "0.05"
-			}, slidingTime)
-			$(".rightArrow").animate({
-				opacity: "0"
-			}, slidingTime)
-		});
-	}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Portfolio</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="scripts/fonts.css" rel="stylesheet">
+    <link href="scripts/test.css" rel="stylesheet">
 
-	function closeClick()
-	{
-		$(".close").mouseover(function(){
-			$(".close").html("close [x]");
-		});
-		
-		$(".close").mouseout(function(){
-			$(".close").html("[x]");
-		});
-		
-		$(".close").click(function(){
-			$(".contentWindow").slideToggle(slidingTime);
-			$(".darken").animate({
-				opacity: "0"
-			}, slidingTime, function(){
-				$(".darken").css("display", "none");
-			});
-			$(".contentWindow").html("<span class='close'>[x]</span>");
-			closeClick();
-		});
-	}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <br><br>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled Bootstrap plugins -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
-	
-	for (var i = 0; i <= allImages.length-1; i++)
-	{
-		$(".img"+i).click(function(){
-			//goToPos($(this).attr("class"));
-			openWindow(blurbs[$(this).attr("class").substring($(this).attr("class").length-1, $(this).attr("class").length)] );
-		});
-		
-		$(".img"+i).mouseover(function(){
-			$( "."+$(this).attr("class") ).css("box-shadow", "0px 0px 15px #fff");
-		});
-		
-		$(".img"+i).mouseout(function(){
-			$( "."+$(this).attr("class") ).css("box-shadow", "0 0 30px rgba(0, 0, 0, 0.2)");
-		});
-	}
-	
-	function openWindow(insideText)
-	{
-		$(".darken").css("display", "block");
-		$(".contentWindow").slideToggle(slidingTime);
-		$(".contentWindow").append(insideText);
-		$(".darken").animate({
-			opacity: "0.6"
-		}, slidingTime);
-	}
-	
-	function goToPos(obj)	// AWKWARD FUNCTION: display messes up and caption does not follow
-	{
-		leftValue = $("."+obj).css("left");
-		leftValue2 = leftValue.substring(0, leftValue.indexOf('p'));
-		
-		var k = centerImg - leftValue2;
-		
-		if (k < 0)
-		{
-			k = -1 * k;
-			k = k / (imgDiff + imgWidth);
-			
-			for (var m = 1; m <= k; m++)
-			{
-				rotatePics("left");
-				rotateCaps("left");
-			}
-		}
-		else if (k > 0)
-		{
-			k = k / (imgDiff + imgWidth);
-			
-			for (var m = 1; m <= k; m++)
-			{
-				rotatePics("right");
-				rotateCaps("right");
-			}
-		}
-		else
-			return;
-	}
-	
-	function rotateCaps(direction)
-	{
-		if (direction == "right")
-		{
-			var firstCap = captions[0];
-			
-			for (var i = 0; i <= captions.length-2; i++)
-			{
-				captions[i] = captions[i+1];
-			}
-			
-			captions[captions.length-1] = firstCap;
-		}
-		
-		else
-		{
-			var lastCap = captions[captions.length-1];
-			var tempCap1 = captions[0];
-			var tempCap2;
-			
-			for (var i = 0; i <= captions.length-2; i++)
-			{
-				tempCap2 = captions[i+1]
-				captions[i+1] = tempCap1;
-				tempCap1 = tempCap2;
-			}
-			
-			captions[0] = lastCap;
-		}
-		
-		$(".caption").html(captions[2]);
-	}
-	
-	function rotatePics(direction)	// Has to have more than 1 picture
-	{
-		var firstPic = ".img";
-		var lastPic = ".img";
-		
-		if (direction == "right")
-		{
-			for (var i = 0; i <= allImages.length-1; i++)
-			{
-				if ( $(".img"+i).css("left") == "20px" )
-				{
-					firstPic += i;
-				}
-				else if ( $(".img"+i).css("left") == "1595px" )
-				{
-					lastPic += i;
-				}
-				$(".img"+i).animate({
-					left: "-=" + (imgWidth+imgDiff)
-				}, 500);
-			}
-			
-			$(firstPic).css("display", "none");
-			$(lastPic).css("display", "block");
-		}
-		
-		else
-		{
-			for (var i = 0; i <= allImages.length-1; i++)
-			{
-				if ( $(".img"+i).css("left") == "-295px" )
-				{
-					firstPic += i;
-				}
-				else if ( $(".img"+i).css("left") == "1280px" )
-				{
-					lastPic += i;
-				}
-				
-				$(".img"+i).animate({
-					left: "+=" + (imgWidth+imgDiff)
-				}, 500);
-			}
-			
-			$(firstPic).css("display", "block");
-			$(lastPic).css("display", "none");
-		}
-	}
-	
-	function setPics()
-	{
-		var setStyles = "{ box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); z-index: 3; position: absolute; top: 200px; left:";
-		var setInvisibleStyles = "{ display: none; box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); z-index: 3; position: absolute; top: 200px; left:";
-		var makingStyles = "";
-		var j = 0;
-		
-		for (j = 0; j <= maxPics-1; j++)
-		{
-			imageLocs[j] = imgMargin + (imgDiff + imgWidth)*j;
-			makingStyles += ".img" + j + setStyles + imageLocs[j] + "px; } \n";
-		}
-		
-		for (j = j; j <= allImages.length-1; j++)
-		{
-			imageLocs[j] = imgMargin + (imgDiff + imgWidth)*j;
-			makingStyles += ".img" + j + setInvisibleStyles + imageLocs[j] + "px; } \n";
-		}
-		
-		$("body").append("<style type='text/css'>\n" + makingStyles + "</style>");
-		
-		for (var i = 0; i <= allImages.length-1; i++)
-		{
-			$("body").append("<div class='img"+ i + "'><img src='images/" + allImages[i] + "' width='300' height='200'></div>");
-		}
-	}
-	
-	function deletePics()
-	{
-		for (var i = 0; i <= images.length-1; i++)
-		{
-			$(".img"+i).remove();
-		}
-	}
-	
-});
-</script>
-</head>
-<body>
-<div class="heading">Portfolio</div>
-<br>
-<div class="subheading">Take a look</div>
-<div style="width: 100%; height: 500px; position: absolute; top: 150px; left: 0px; background: #111111"></div>
-<div class="caption">
-<a href="http://pratool.github.io/Olin-Shine">Olin Shine</a>: Solar Panels at Olin<br>
-</div>
-<div class="leftSide"></div>
-<div class="leftArrow"></div>
-<div class="rightSide"></div>
-<div class="rightArrow"></div>
-<div class="darken"></div>
-<div class="contentWindow">
-<span class="close">[x]</span>
-</div>
-<div class="creator">website by pratool gadtaula</div>
-</body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+
+    <div class="container">
+        <section class="content row">
+            <div class="col col-xs-8 col-md-4">
+                <img class='img-circle self' src='images/self03.jpg' width=300>
+            </div>
+            <div class="col col-xs-12 col-sm-7 col-md-6">
+                <h1 class="header text">Curious</h1>
+                <p class="lead text">Engineering and Problem Solving</p>
+                <div class="blurb text">
+                    I've always enjoyed solving problems, especially ones everyone deems "unapproachable." Over the years, I've collected some of my work and put it up online for easy browsing.
+                </div>
+                <div class="pull-right">
+                <button type="button" class="btn btn-xs btn-default">Projects</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content row">
+            <div class="col col-xs-12 col-sm-7 col-md-6">
+                <div class="text" id="projects">
+                  <h1 class="header">Projects</h1>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+                </div>
+            </div>
+        </section>
+      </div>
+
+  </body>
 </html>
