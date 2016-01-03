@@ -17,3 +17,8 @@
 	font-family: AftaSans;
 	src: url(../fonts/AftaSansThin.woff);
 }
+
+@font-face {
+	font-family: PierRegular;
+	src: url(../fonts/PierRegular.woff);
+}
