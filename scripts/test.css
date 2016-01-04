@@ -1,6 +1,6 @@
 @font-face {
     font-family: "gyre";
-    src: url(fonts/texgyreschola.woff);
+    src: url(fonts/texgyreschola.woff) format('woff');
 }
 
 .self {
