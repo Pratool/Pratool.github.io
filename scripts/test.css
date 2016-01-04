@@ -1,14 +1,14 @@
 @font-face {
     font-family: "gyre";
-    /*src: url('fonts/texgyreschola.eot'), url('fonts/texgyreschola.woff'), src: url('fonts/texgyreschola.svg');*/
-    src: url('./fonts/texgyreschola.eot'),
-        url('./fonts/texgyreschola.woff'),
-        url('./fonts/texgyreschola.svg');
+    src: url('./fonts/texgyreschola.eot') format('embedded-opentype'),
+        url('./fonts/texgyreschola.woff') format('woff'),
+        url('./fonts/texgyreschola.ttf') format('truetype'),
+        url('./fonts/texgyreschola.svg') format('svg');
 }
 
 .self {
 	position: relative;
-	top: 23px;
+	top: 65px;
 }
 
 .text {
