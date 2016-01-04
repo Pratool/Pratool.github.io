@@ -3,9 +3,13 @@
     src: url('../fonts/texgyreschola.woff');
 }
 
+body {
+    padding-top: 65px;
+}
+
 .self {
 	position: relative;
-	top: 65px;
+	top: 0px;
 }
 
 .text {
