@@ -1,8 +1,8 @@
 @font-face {
     font-family: "gyre";
-    src: url(fonts/texgyreschola.eot);
-    src: url(fonts/texgyreschola.woff) format('woff');
-    src: url(fonts/texgyreschola.svg) format('svg');
+    src: url('fonts/texgyreschola.eot');
+    src: url('fonts/texgyreschola.woff') format('woff');
+    src: url('fonts/texgyreschola.svg') format('svg');
 }
 
 .self {
