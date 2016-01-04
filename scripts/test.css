@@ -16,6 +16,10 @@ body {
     font-family: gyre;
 }
 
+.btn-text {
+    font-size: 12pt
+}
+
 .header {
     font-size: 40pt;
 }
