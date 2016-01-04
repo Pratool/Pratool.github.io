@@ -4,7 +4,7 @@
 }
 
 body {
-    padding-top: 65px;
+    padding-top: 93px;
 }
 
 .self {
@@ -30,4 +30,8 @@ body {
 
 .blurb {
     font-size: 16pt;
+}
+
+.navbar-nav > li > a {
+    font-size: 14pt !important;
 }
