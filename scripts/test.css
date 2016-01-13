@@ -23,6 +23,11 @@
     }
 }
 
+.cpu-info {
+    font-size: 18pt;
+    display: none;
+}
+
 .center-block {
     display: block;
     margin-left: auto;
