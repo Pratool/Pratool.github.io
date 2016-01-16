@@ -23,7 +23,12 @@
     }
 }
 
-.cpu-info {
+span.more {
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+
+.info {
     font-size: 18pt;
     display: none;
 }

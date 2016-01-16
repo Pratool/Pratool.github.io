@@ -1,10 +1,9 @@
 $('span.more').click(function() {
-    //alert($(this).attr("id"));
-    if ($("."+$(this).attr("id")).css('display') == 'none') {
-        $("."+$(this).attr("id")).css('display', 'block');
-        $(this).text('Less');
+    if ($(".info."+$(this).attr("id")).css('display') == 'none') {
+        $(".info."+$(this).attr("id")).css('display', 'block');
+        $(this).text('less');
     } else {
-        $("."+$(this).attr("id")).css('display', 'none');
-        $(this).text('More');
+        $(".info."+$(this).attr("id")).css('display', 'none');
+        $(this).text('more');
     }
 });
