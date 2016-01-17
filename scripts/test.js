@@ -1,9 +1,10 @@
 $('span.more').click(function() {
-    if ($(".info."+$(this).attr("id")).css('display') == 'none') {
-        $(".info."+$(this).attr("id")).css('display', 'block');
-        $(this).text('less');
+    var $anchor = $(".info."+$(this).attr("id"));
+    var $curObj = $(this);
+    if ($curObj.text() == 'more') {
+        $curObj.text('less');
     } else {
-        $(".info."+$(this).attr("id")).css('display', 'none');
-        $(this).text('more');
+        $curObj.text('more');
     }
+    $anchor.stop().toggle(300);
 });
