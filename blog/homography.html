@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Homography, Part 1</title>
+  <script>
+      MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="../css/austere.css">
+  </head>
+  <body>
+    <h1>Homography, Part 1</h1>
+    <h2>Context</h2>
+    <p>How can a computer convert an image of a "planar object," like a sheet of paper, taken at an angle, to one that looks like the image was captured straight on? The algorithm behind smartphone applications that scan documents drove me to investigate and create an application of my own. This page serves to document the newfound ideas as I would find easy to understand and put in one place.
+    </p>
+    <h2>Fundamentals</h2>
+    <h3>Camera Hardware</h3>
+    <p>To grok an imaging system, we must start at the <a href="https://en.wikipedia.org/wiki/Image_sensor">image sensor (imager)</a>. On current-day (2019) consumer-market camera hardware, this is often a 2D array of CMOS transistor circuits that produce an electric signal based on the frequency of a light-wave. While layout of the sensor circuits and the arrangement in the 2D grid is not necessarily fixed between imager models, a simplified model can be used to provide a layer of abstraction around the specifics of the circuit.
+    </p>
+    <h3>Image Memory Models</h3>
+    <p>This simplified model of an imager lends itself well to being stored as a matrix where in any of the three color channels the \(i\)th physical row corresponds to the matrix's \(i\)th row at index \(i-1\) and the \(j\)th physical column corresponds to the matrix's \(j\)th column at index \(j-1\). This is also the standard. There are two general ways to represent images as matrices in memory<sup>1</sup>, which correspond to <a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order">row-major or column-major storage</a>. In a nutshell: row-major indicates that elements in a row are stored sequentially: making column access difficult. Column-major is the exact opposite. Depending on your use-case, this may be consequential to performance: make sure to understand the memory model of the matrix library you will be using. Numpy arrays are row-major by default and Eigen matrices are column-major by default.
+    </p>
+    <img src="../images/exampleImager.svg" width=200>
+    <div style="width:300px">
+      (a) Example imager grid. Black squares indicate the pixel is saturated.
+    </div>
+    <br>
+    <img src="../images/exampleImageMatrix.png" width=200>
+    <div style="width:300px">
+      (b) Matrix corresponding to imager grid in (a).
+    </div>
+    <h3>Homogenous Coordinates</h3>
+    <p>Each pixel corresponds to a physical 3D coordinate. In fact, we can derive the absolute mapping from the simplified imager model. The question does remain however, from <i>where</i> do we measure the coordinates? What is the origin? Here we can make an assumption on the geometry of the object in the image: we will assume it is a 2D plane. With that assumption, we can consider the top left corner of the imager as the plane's origin at unit distance away from the viewer.
+    </p>
+    <p>Let's use canonical pixel coordinates to represent the image. At a high level, we will convert pixel coordinates to homogenous coordinates, transform the homogenous coordinates from one perspective to another (project transformation), convert back to pixel coordinates, then rasterize the new pixel coordinates using interpolation. An image is a matrix of intensity values, often times with multiple channels making it a tensor. For the purposes of this document, we will use one channel, but do note that this method works for any number of channels.
+    </p>
+    <sup>1</sup> There are sparse matrix representations as well, but they do not bode well with the algorithms mentioned in this document.
+  </body>
+</html>
